@@ -38,18 +38,6 @@ function showCard(data, cardId) {
     document.getElementById("member-name").textContent = data.name;
     document.getElementById("card-id").textContent = cardId;
 
-    // Player stats
-    const statsEl = document.getElementById("player-stats");
-    if (data.total_events > 0 || data.favorite_game) {
-        statsEl.classList.remove("hidden");
-        if (data.total_events > 0) {
-            document.getElementById("stat-events").textContent = data.total_events + " events";
-        }
-        if (data.favorite_game) {
-            document.getElementById("stat-game").textContent = data.favorite_game;
-        }
-    }
-
     // QR code
     new QRCode(document.getElementById("qr-code"), {
         text: CARD_URL_BASE + cardId,
