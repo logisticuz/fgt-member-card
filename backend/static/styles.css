@@ -46,10 +46,9 @@ body {
 
 .landing-logo,
 .error-logo {
-    width: 120px;
-    height: 120px;
+    width: 220px;
+    height: auto;
     margin-bottom: 24px;
-    border-radius: 50%;
 }
 
 .landing-container h1,
@@ -282,9 +281,8 @@ body {
 }
 
 .card-logo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+    width: 140px;
+    height: auto;
 }
 
 .card-badge {
