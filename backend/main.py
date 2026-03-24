@@ -38,7 +38,7 @@ class VerifyRequest(BaseModel):
 @app.get("/")
 async def landing(request: Request):
     """Landing page — enter personnummer to retrieve card."""
-    return templates.TemplateResponse("index.html", {"request": request, "page": "landing"})
+    return templates.TemplateResponse(request, "index.html", {"page": "landing"})
 
 
 @app.get("/{card_id}")
@@ -47,7 +47,7 @@ async def card_page(request: Request, card_id: str):
     import re
     if not re.match(r"^FGC-[A-Z0-9]{4,8}$", card_id):
         raise HTTPException(status_code=404, detail="Not found")
-    return templates.TemplateResponse("index.html", {"request": request, "page": "card"})
+    return templates.TemplateResponse(request, "index.html", {"page": "card"})
 
 
 # --- API ---
