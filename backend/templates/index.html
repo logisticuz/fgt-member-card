@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FGC Trollhättan — Medlemskort</title>
+    <meta name="description" content="Digitalt medlemskort för FGC Trollhättan">
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="icon" href="/static/assets/logo.png">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- Landing page — personnummer verification -->
+    <div id="landing" class="hidden">
+        <div class="landing-container">
+            <img src="/static/assets/logo.png" alt="FGC Trollhättan" class="landing-logo">
+            <h1>FGC Trollhättan</h1>
+            <p class="landing-subtitle">Digitala Medlemskort</p>
+            <p class="landing-text">Hämta ditt digitala medlemskort genom att verifiera ditt medlemskap.</p>
+
+            <form id="verify-form" class="verify-form">
+                <label for="tag" class="verify-label">Ditt tag eller namn</label>
+                <input
+                    type="text"
+                    id="tag"
+                    name="tag"
+                    placeholder="t.ex. Logisticuz"
+                    maxlength="50"
+                    autocomplete="off"
+                    class="verify-input verify-input-text"
+                    required
+                >
+                <label for="personnummer" class="verify-label">Personnummer</label>
+                <input
+                    type="text"
+                    id="personnummer"
+                    name="personnummer"
+                    placeholder="YYYYMMDDXXXX"
+                    maxlength="13"
+                    autocomplete="off"
+                    inputmode="numeric"
+                    class="verify-input"
+                    required
+                >
+                <button type="submit" id="verify-btn" class="verify-btn">Hämta mitt kort</button>
+                <div id="verify-error" class="verify-error hidden"></div>
+            </form>
+
+            <p class="gdpr-notice">
+                <i class="fas fa-lock"></i>
+                Ditt personnummer används bara för att verifiera ditt medlemskap mot Sverok.
+                Det sparas aldrig i vårt system.
+            </p>
+
+            <p class="landing-text muted">Inte medlem ännu? Kontakta oss på <a href="https://discord.gg/tPDaSTgPm6" class="inline-link">Discord</a>.</p>
+        </div>
+    </div>
+
+    <!-- Error page -->
+    <div id="error" class="hidden">
+        <div class="error-container">
+            <img src="/static/assets/logo.png" alt="FGC Trollhättan" class="error-logo">
+            <h1>Ogiltigt medlemskort</h1>
+            <p>Kortet kunde inte hittas. Kontrollera att länken stämmer.</p>
+            <a href="https://discord.gg/tPDaSTgPm6" class="error-link">Kontakta oss på Discord</a>
+        </div>
+    </div>
+
+    <!-- Member card -->
+    <div id="card-page" class="hidden">
+        <div class="card">
+            <div class="card-header">
+                <img src="/static/assets/logo.png" alt="FGC Trollhättan" class="card-logo">
+                <span class="card-badge">MEDLEMSKORT</span>
+            </div>
+
+            <div class="card-body">
+                <h1 id="member-name" class="member-name"></h1>
+                <p id="card-id" class="card-id-text"></p>
+                <div id="player-stats" class="player-stats hidden">
+                    <span id="stat-events" class="stat-pill"></span>
+                    <span id="stat-game" class="stat-pill"></span>
+                </div>
+            </div>
+
+            <div class="qr-section">
+                <div id="qr-code" class="qr-container"></div>
+                <p class="qr-label">Skanna för incheckning</p>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <h2 class="social-heading">Häng med oss</h2>
+            <div class="social-grid">
+                <a href="https://discord.gg/tPDaSTgPm6" target="_blank" rel="noopener" class="social-btn discord">
+                    <i class="fab fa-discord"></i>
+                    <span>Discord</span>
+                </a>
+                <a href="https://www.youtube.com/@smashtrolls6538" target="_blank" rel="noopener" class="social-btn youtube">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://www.twitch.tv/fgctrollhattan" target="_blank" rel="noopener" class="social-btn twitch">
+                    <i class="fab fa-twitch"></i>
+                    <span>Twitch</span>
+                </a>
+                <a href="https://www.twitch.tv/fgctrollhattan2" target="_blank" rel="noopener" class="social-btn twitch">
+                    <i class="fab fa-twitch"></i>
+                    <span>Twitch 2</span>
+                </a>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>FGC Trollhättan &copy; 2026</p>
+            <p class="footer-sub">Powered by IMLO</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script src="/static/card.js"></script>
+</body>
+</html>

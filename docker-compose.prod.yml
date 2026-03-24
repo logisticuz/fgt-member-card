@@ -1,0 +1,23 @@
+services:
+  member-card:
+    build: .
+    ports:
+      - "8003:8002"
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=postgresql://fgc:devpassword@postgres:5432/fgc_checkin
+      - N8N_INTERNAL_URL=http://n8n:5678
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8002/')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    networks:
+      - fgt-net
+
+networks:
+  fgt-net:
+    external: true
+    name: fgt-checkin-system_fgt-net

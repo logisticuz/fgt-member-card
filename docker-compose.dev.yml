@@ -1,0 +1,19 @@
+services:
+  backend:
+    build: .
+    ports:
+      - "8003:8002"
+    env_file: .env
+    environment:
+      - DATABASE_URL=postgresql://fgc:devpassword@postgres:5432/fgc_checkin
+      - N8N_INTERNAL_URL=http://n8n:5678
+    command: uvicorn backend.main:app --host 0.0.0.0 --port 8002 --reload
+    volumes:
+      - ./backend:/app/backend
+    networks:
+      - fgt-network
+
+networks:
+  fgt-network:
+    external: true
+    name: fgt-dev_fgt-net

@@ -1,0 +1,426 @@
+/* ── Reset & Base ────────────────────────────── */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #0a0a0a;
+    --card-bg: #111111;
+    --card-border: #1a1a1a;
+    --cyan: #00BFFF;
+    --cyan-dim: rgba(0, 191, 255, 0.15);
+    --cyan-glow: rgba(0, 191, 255, 0.3);
+    --text: #f0f0f0;
+    --text-muted: #888;
+    --radius: 16px;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ── Landing Page ───────────────────────────── */
+
+.landing-container,
+.error-container {
+    text-align: center;
+    max-width: 400px;
+    margin: auto;
+    padding: 48px 24px;
+}
+
+.landing-logo,
+.error-logo {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 24px;
+    border-radius: 50%;
+}
+
+.landing-container h1,
+.error-container h1 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+}
+
+.landing-subtitle {
+    color: var(--cyan);
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+}
+
+.landing-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.landing-text.muted {
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.error-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 24px;
+    background: var(--cyan);
+    color: #000;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: opacity 0.2s;
+}
+
+.error-link:hover {
+    opacity: 0.85;
+}
+
+/* ── Verify Form ─────────────────────────────── */
+
+.verify-form {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.verify-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-align: left;
+}
+
+.verify-input {
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    background: #161616;
+    color: var(--text);
+    font-size: 1.1rem;
+    font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+    letter-spacing: 0.15em;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.verify-input:focus {
+    border-color: var(--cyan);
+}
+
+.verify-input::placeholder {
+    color: #444;
+    letter-spacing: 0.1em;
+}
+
+.verify-input-text {
+    letter-spacing: normal;
+    font-family: inherit;
+}
+
+.verify-btn {
+    padding: 14px 24px;
+    border: none;
+    border-radius: 10px;
+    background: var(--cyan);
+    color: #000;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.verify-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.verify-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.verify-error {
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: rgba(255, 60, 60, 0.1);
+    border: 1px solid rgba(255, 60, 60, 0.3);
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.gdpr-notice {
+    margin-top: 20px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: rgba(0, 191, 255, 0.05);
+    border: 1px solid rgba(0, 191, 255, 0.1);
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.gdpr-notice i {
+    color: var(--cyan);
+    margin-right: 4px;
+}
+
+.inline-link {
+    color: var(--cyan);
+    text-decoration: none;
+}
+
+.inline-link:hover {
+    text-decoration: underline;
+}
+
+/* ── Player Stats ────────────────────────────── */
+
+.player-stats {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.stat-pill {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--cyan);
+    background: var(--cyan-dim);
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+/* ── Card ────────────────────────────────────── */
+
+#card-page {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.card {
+    width: 100%;
+    background: linear-gradient(145deg, #111 0%, #0d0d0d 50%, #111 100%);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 32px 24px;
+    position: relative;
+    overflow: hidden;
+    animation: card-glow 4s ease-in-out infinite;
+}
+
+@keyframes card-glow {
+    0%, 100% {
+        box-shadow:
+            0 0 20px rgba(0, 191, 255, 0.05),
+            0 4px 24px rgba(0, 0, 0, 0.4);
+    }
+    50% {
+        box-shadow:
+            0 0 30px rgba(0, 191, 255, 0.12),
+            0 4px 24px rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* Subtle top accent line */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.card-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.card-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    border: 1px solid var(--cyan-dim);
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: var(--cyan-dim);
+}
+
+.card-body {
+    margin-bottom: 28px;
+}
+
+.member-name {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+    margin-bottom: 6px;
+}
+
+.card-id-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+    letter-spacing: 0.08em;
+}
+
+/* ── QR Code ─────────────────────────────────── */
+
+.qr-section {
+    text-align: center;
+}
+
+.qr-container {
+    display: inline-block;
+    background: #fff;
+    padding: 16px;
+    border-radius: 12px;
+    line-height: 0;
+}
+
+.qr-container img,
+.qr-container canvas {
+    border-radius: 4px;
+}
+
+.qr-label {
+    margin-top: 12px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* ── Social Links ────────────────────────────── */
+
+.social-links {
+    width: 100%;
+    text-align: center;
+}
+
+.social-heading {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.social-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: #161616;
+    border: 1px solid #222;
+    transition: all 0.2s ease;
+}
+
+.social-btn:hover {
+    transform: translateY(-1px);
+    border-color: #333;
+}
+
+.social-btn i {
+    font-size: 1.1rem;
+}
+
+.social-btn.discord:hover {
+    border-color: #5865F2;
+    background: rgba(88, 101, 242, 0.1);
+}
+
+.social-btn.youtube:hover {
+    border-color: #FF0000;
+    background: rgba(255, 0, 0, 0.08);
+}
+
+.social-btn.twitch:hover {
+    border-color: #9146FF;
+    background: rgba(145, 70, 255, 0.1);
+}
+
+/* ── Footer ──────────────────────────────────── */
+
+.footer {
+    text-align: center;
+    padding: 16px 0;
+}
+
+.footer p {
+    font-size: 0.75rem;
+    color: #444;
+}
+
+.footer-sub {
+    margin-top: 4px;
+    font-size: 0.7rem !important;
+}
